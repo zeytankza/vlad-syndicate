@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLAD SYNDICATE — Всемирный Синдикат Владов</title>
+    <meta name="description" content="Официальный портал первого цифрового синдиката людей по имени Влад. Защита интересов, генератор сертификатов, манифест братства и закрытый клуб.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Всемирный Синдикат Владов (VLAD SYNDICATE)">
+    <meta property="og:description" content="Если тебя зовут не Влад — закрой эту страницу. Пройди фейсконтроль имени и получи сертификат Верховного Влада.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Unbounded:wght@400;600;700;800;900&family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS v3.4 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#F5D061',
+                            500: '#E5B83B',
+                            600: '#C29826',
+                            700: '#947214',
+                            glow: 'rgba(245, 208, 97, 0.25)'
+                        },
+                        obsidian: {
+                            950: '#07070A',
+                            900: '#0D0D12',
+                            800: '#14141C',
+                            700: '#1F1F2B',
+                            600: '#2E2E3F'
+                        }
+                    },
+                    fontFamily: {
+                        title: ['Unbounded', 'sans-serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                        royal: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* Custom scrollbars & swipe helpers */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF1B0 0%, #F5D061 50%, #C29826 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            border: 1px solid rgba(245, 208, 97, 0.3);
+            box-shadow: 0 0 25px rgba(245, 208, 97, 0.12);
+        }
+
+        .glass-panel {
+            background: rgba(19, 19, 28, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Subtle pulse glow */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+        .animate-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-obsidian-950 text-gray-200 font-body overflow-x-hidden selection:bg-gold-500 selection:text-black">
+
+    <!-- Background Ambient Lighting -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-72 sm:w-[700px] h-72 sm:h-[500px] bg-gold-500/10 rounded-full blur-[140px] animate-pulse-glow"></div>
+        <div class="absolute top-[40%] left-0 sm:left-4 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-purple-900/10 rounded-full blur-[130px]"></div>
+        <div class="absolute top-[70%] right-0 sm:right-4 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-gold-600/10 rounded-full blur-[140px]"></div>
+    </div>
+
+    <!-- Top Live Network Bar -->
+    <aside aria-label="Служебная плашка Синдиката" class="relative z-50 bg-black/80 border-b border-gold-500/20 py-2 px-4 text-xs">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 -ml-3"></span>
+                <span class="text-gray-400 font-medium">Спутниковый канал связи Владов: <strong class="text-emerald-400">АКТИВЕН</strong></span>
+            </div>
+            <div class="hidden sm:flex items-center space-x-6 text-gray-400">
+                <span><i class="fa-solid fa-users text-gold-400 mr-1.5"></i> 42 819 Владов в строю</span>
+                <span><i class="fa-solid fa-earth-americas text-gold-400 mr-1.5"></i> 147 городов дислокации</span>
+                <span class="text-gold-400 font-semibold"><i class="fa-solid fa-shield-halved mr-1"></i> 152-ФЗ РФ</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-400 to-gold-700 flex items-center justify-center text-obsidian-950 font-title font-black text-xl shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform">
+                    V
+                </div>
+                <div>
+                    <div class="font-title font-black tracking-wider text-base sm:text-lg text-white group-hover:text-gold-400 transition-colors">
+                        VLAD <span class="text-gold-400">SYNDICATE</span>
+                    </div>
+                    <div class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Всемирный Орден Владов</div>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#gate" class="hover:text-gold-400 transition-colors">Фейсконтроль</a>
+                <a href="#manifest" class="hover:text-gold-400 transition-colors">Манифест</a>
+                <a href="#certificate" class="hover:text-gold-400 transition-colors">Сертификат</a>
+                <a href="#privileges" class="hover:text-gold-400 transition-colors">Привилегии</a>
+                <a href="#quiz" class="hover:text-gold-400 transition-colors">Тест «Ты Влад?»</a>
+                <a href="#pricing" class="hover:text-gold-400 transition-colors">Статусы</a>
+                <a href="#reviews" class="hover:text-gold-400 transition-colors">Братья</a>
+            </nav>
+
+            <!-- CTA & Mobile Trigger -->
+            <div class="flex items-center space-x-3">
+                <a href="#gate" class="relative inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-title text-xs font-bold text-obsidian-950 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 hover:from-gold-300 hover:to-gold-500 shadow-lg shadow-gold-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 min-h-[44px]">
+                    <i class="fa-solid fa-fingerprint mr-2 text-sm"></i>
+                    <span>Вход для Владов</span>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" aria-label="Открыть мобильное меню" class="lg:hidden w-11 h-11 rounded-xl bg-obsidian-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-obsidian-900 border-b border-gold-500/20 px-6 py-6 space-y-4">
+            <a href="#gate" class="block text-base font-semibold text-gray-200 hover:text-gold-400 mobile-nav-link">Фейсконтроль имени</a>
+            <a href="#manifest" class="block text-base font-semibold text-gray-200 hover:text-gold-400 mobile-nav-link">5 Законов Влада</a>
+            <a href="#certificate" class="block text-base font-semibold text-gray-200 hover:text-gold-400 mobile-nav-link">Генератор сертификата</a>
+            <a href="#privileges" class="block text-base font-semibold text-gray-200 hover:text-gold-400 mobile-nav-link">Привилегии Синдиката</a>
+            <a href="#quiz" class="block text-base font-semibold text-gray-200 hover:text-gold-400 mobile-nav-link">Тест «На сколько ты Влад?»</a>
+            <a href="#pricing" class="block text-base font-semibold text-gray-200 hover:text-gold-400 mobile-nav-link">Тарифы братства</a>
+            <a href="#join" class="block text-base font-bold text-gold-400 mobile-nav-link">Вступить в Синдикат</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <!-- Warning / Elite Badge -->
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs sm:text-sm font-semibold mb-8 backdrop-blur-md">
+                        <i class="fa-solid fa-triangle-exclamation text-gold-400 animate-bounce"></i>
+                        <span>ВНИМАНИЕ: Зона наивысшей концентрации Владиславов</span>
+                    </div>
+
+                    <!-- Main Catchphrase Headline -->
+                    <h1 class="font-title text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6">
+                        ЕСЛИ ТЕБЯ ЗОВУТ НЕ ВЛАД — <br>
+                        <span class="gold-gradient-text uppercase">ЗАКРОЙ ЭТУ СТРАНИЦУ.</span>
+                    </h1>
+
+                    <!-- Lead Paragraph -->
+                    <p class="text-base sm:text-xl text-gray-300 font-normal leading-relaxed mb-10 max-w-2xl mx-auto">
+                        Первый в галактике автономный цифровой синдикат людей с великим именем <strong>Влад</strong>. Защита чести, солидарность тезок по всему миру, вечный запас респекта и тайное братство.
+                    </p>
+
+                    <!-- Interactive Quick Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
+                        <a href="#gate" class="w-full sm:w-auto px-8 py-4 rounded-xl font-title text-sm font-extrabold text-obsidian-950 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 hover:from-gold-300 hover:to-gold-500 shadow-xl shadow-gold-500/30 transition-all transform hover:-translate-y-1 active:translate-y-0 text-center flex items-center justify-center min-h-[48px]">
+                            <i class="fa-solid fa-id-card-clip mr-2.5 text-base"></i>
+                            <span>ПРОЙТИ ФЕЙСКОНТРОЛЬ</span>
+                        </a>
+                        <a href="#certificate" class="w-full sm:w-auto px-8 py-4 rounded-xl font-title text-sm font-bold text-white bg-obsidian-800/80 hover:bg-obsidian-700 border border-gold-500/30 hover:border-gold-500 transition-all transform hover:-translate-y-1 active:translate-y-0 text-center flex items-center justify-center min-h-[48px]">
+                            <i class="fa-solid fa-award mr-2.5 text-gold-400 text-base"></i>
+                            <span>СКАЧАТЬ СЕРТИФИКАТ ВЛАДА</span>
+                        </a>
+                    </div>
+
+                    <!-- Metric Counters Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-left">
+                        <div class="glass-panel rounded-2xl p-5 sm:p-6 border border-white/5 hover:border-gold-500/40 transition-colors">
+                            <div class="font-title text-2xl sm:text-3xl font-black text-gold-400 mb-1" id="counterMembers">42,819</div>
+                            <div class="text-xs sm:text-sm text-gray-400 font-medium">Владов зарегистрировано</div>
+                        </div>
+                        <div class="glass-panel rounded-2xl p-5 sm:p-6 border border-white/5 hover:border-gold-500/40 transition-colors">
+                            <div class="font-title text-2xl sm:text-3xl font-black text-white mb-1">100%</div>
+                            <div class="text-xs sm:text-sm text-gray-400 font-medium">Взаимный респект тезок</div>
+                        </div>
+                        <div class="glass-panel rounded-2xl p-5 sm:p-6 border border-white/5 hover:border-gold-500/40 transition-colors">
+                            <div class="font-title text-2xl sm:text-3xl font-black text-emerald-400 mb-1">0</div>
+                            <div class="text-xs sm:text-sm text-gray-400 font-medium">Владимиров (строго табу)</div>
+                        </div>
+                        <div class="glass-panel rounded-2xl p-5 sm:p-6 border border-white/5 hover:border-gold-500/40 transition-colors">
+                            <div class="font-title text-2xl sm:text-3xl font-black text-gold-400 mb-1">147</div>
+                            <div class="text-xs sm:text-sm text-gray-400 font-medium">Городов под контролем</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAME-GATE (ФЕЙСКОНТРОЛЬ ИМЕНИ) -->
+        <section id="gate" class="py-16 sm:py-24 bg-obsidian-900/60 border-y border-white/5 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/20">Биометрический шлюз</span>
+                    <h2 class="font-title text-2xl sm:text-4xl font-extrabold text-white mt-4 mb-3">
+                        ФЕЙСКОНТРОЛЬ ПО ИМЕНИ
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+                        Введите ваше настоящее имя. Система проверит генетический код имени на соответствие протоколу Влада.
+                    </p>
+                </div>
+
+                <!-- Gate Box -->
+                <div id="gateCard" class="glass-panel rounded-3xl p-6 sm:p-10 gold-border-glow transition-all duration-300 relative overflow-hidden">
+                    <form id="gateForm" class="space-y-6" onsubmit="event.preventDefault(); verifyName();">
+                        <div>
+                            <label for="gateInputName" class="block text-sm font-semibold text-gray-300 mb-2">
+                                <i class="fa-solid fa-user-check text-gold-400 mr-2"></i>Ваше имя (как в паспорте):
+                            </label>
+                            <div class="relative">
+                                <input 
+                                    type="text" 
+                                    id="gateInputName" 
+                                    placeholder="Например: Влад, Владислав, Владос..."
+                                    required 
+                                    class="w-full bg-obsidian-950/80 border border-white/10 focus:border-gold-400 rounded-xl px-5 py-4 text-white text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-gold-500/30 transition-all"
+                                >
+                                <button 
+                                    type="submit" 
+                                    class="absolute right-2.5 top-2.5 bottom-2.5 px-6 rounded-lg font-title text-xs font-extrabold text-obsidian-950 bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-300 hover:to-gold-500 transition-all flex items-center justify-center min-h-[44px]"
+                                >
+                                    <span>ПРОВЕРИТЬ</span>
+                                    <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Gate Status Output -->
+                    <div id="gateResult" class="hidden mt-8 pt-6 border-t border-white/10"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MANIFEST (5 НЕЗАМЕНИМЫХ ЗАКОНОВ СИНДИКАТА) -->
+        <section id="manifest" class="py-16 sm:py-28 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/20">Кодекс Чести</span>
+                        <h2 class="font-title text-2xl sm:text-4xl font-extrabold text-white mt-4">
+                            5 НЕЗЫБЛЕМЫХ ЗАКОНОВ ВЛАДА
+                        </h2>
+                    </div>
+                    <p class="text-gray-400 text-sm max-w-md mt-4 md:mt-0">
+                        Приняты единогласным голосованием на Большом Совете Владиславов. Нарушение карается мытьем посуды на всех тусовках Владов.
+                    </p>
+                </div>
+
+                <!-- Mobile Swipe / Desktop Grid -->
+                <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
+                    <!-- Law 1 -->
+                    <div class="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-8 border border-white/5 hover:border-gold-500/40 transition-all flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="font-title text-2xl font-black text-gold-400 group-hover:scale-110 transition-transform">#01</span>
+                                <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-handshake-simple text-lg"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-title text-lg font-bold text-white mb-3">Влад Владу — бро, крепость и алиби</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Если один Влад попал в передрягу, любой встречный Влад обязан прикрыть, пожать руку и подтвердить: «Да, мы с ним весь вечер пили чай».
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gold-400/80 font-medium">Статус: Абсолютная солидарность</div>
+                    </div>
+
+                    <!-- Law 2 -->
+                    <div class="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-8 border border-gold-500/30 bg-gradient-to-b from-gold-500/5 to-transparent transition-all flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="font-title text-2xl font-black text-gold-400 group-hover:scale-110 transition-transform">#02</span>
+                                <div class="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-ban text-lg"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-title text-lg font-bold text-white mb-3">Владислав ≠ Владимир</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Главная догма мироздания. Назвать Влада Вовой — тягчайшее оскорбление. Виновник обязуется купить Владу шаурму или покаяться публично.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-red-400 font-medium">Статус: Защищено законом физики</div>
+                    </div>
+
+                    <!-- Law 3 -->
+                    <div class="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-8 border border-white/5 hover:border-gold-500/40 transition-all flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="font-title text-2xl font-black text-gold-400 group-hover:scale-110 transition-transform">#03</span>
+                                <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-person-walking-dashed-line-arrow-right text-lg"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-title text-lg font-bold text-white mb-3">Правило очереди</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Если в очереди в МФЦ или бар стоят два Влада, они не конкурируют, а объединяются в супер-Влада и проходят первыми без лишних вопросов.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gold-400/80 font-medium">Статус: Синергия тезок</div>
+                    </div>
+
+                    <!-- Law 4 -->
+                    <div class="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-8 border border-white/5 hover:border-gold-500/40 transition-all flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="font-title text-2xl font-black text-gold-400 group-hover:scale-110 transition-transform">#04</span>
+                                <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-mug-hot text-lg"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-title text-lg font-bold text-white mb-3">Скидка Тезки</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Заметив бейдж с именем «Влад» у бариста, таксиста или шефа, Влад салютует взглядом. В ответ гарантирован лучший эспрессо и душевный сервис.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gold-400/80 font-medium">Статус: Бытовой комфорт</div>
+                    </div>
+
+                    <!-- Law 5 -->
+                    <div class="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-8 border border-white/5 hover:border-gold-500/40 transition-all flex flex-col justify-between group md:col-span-2">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="font-title text-2xl font-black text-gold-400 group-hover:scale-110 transition-transform">#05</span>
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-shield-cat text-lg"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-title text-lg font-bold text-white mb-3">Честность и чистота помыслов</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Носить имя Владислав — это колоссальная ответственность. Влад держит слово пацана, не бросает друзей, пишет код без багов и соблюдает закон 152-ФЗ РФ.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-emerald-400 font-medium">Статус: Вечный регламент чести</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE CANVAS CERTIFICATE GENERATOR -->
+        <section id="certificate" class="py-16 sm:py-24 bg-obsidian-900/80 border-y border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/20">Гознак Синдиката</span>
+                    <h2 class="font-title text-2xl sm:text-4xl font-extrabold text-white mt-4 mb-3">
+                        ГЕНЕРАТОР СЕРТИФИКАТА ВЛАДА
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Создайте именной золотой сертификат прямо в браузере и скачайте его в высоком разрешении. Подходит для печати и демонстрации в рамочке.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Generator Controls -->
+                    <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-5 border border-white/10">
+                        <h3 class="font-title text-lg font-bold text-white flex items-center">
+                            <i class="fa-solid fa-sliders text-gold-400 mr-2.5"></i>
+                            Данные обладателя
+                        </h3>
+
+                        <div>
+                            <label for="certName" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Имя и Отчество</label>
+                            <input 
+                                type="text" 
+                                id="certName" 
+                                value="Владислав Великий" 
+                                class="w-full bg-obsidian-950 border border-white/10 focus:border-gold-400 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:ring-1 focus:ring-gold-400"
+                                oninput="drawCertificate()"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="certCity" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Город Дислокации</label>
+                            <input 
+                                type="text" 
+                                id="certCity" 
+                                value="Москва, Столица Владов" 
+                                class="w-full bg-obsidian-950 border border-white/10 focus:border-gold-400 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:ring-1 focus:ring-gold-400"
+                                oninput="drawCertificate()"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="certTitle" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Присваиваемый Титул</label>
+                            <select 
+                                id="certTitle" 
+                                class="w-full bg-obsidian-950 border border-white/10 focus:border-gold-400 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:ring-1 focus:ring-gold-400"
+                                onchange="drawCertificate()"
+                            >
+                                <option value="Верховный Архитектор Синдиката">Верховный Архитектор Синдиката</option>
+                                <option value="Почетный Влад Первой Степени">Почетный Влад Первой Степени</option>
+                                <option value="Влад-Непобедимый (Старший Тезка)">Влад-Непобедимый (Старший Тезка)</option>
+                                <option value="Хранитель Золотого Кодекса">Хранитель Золотого Кодекса</option>
+                                <option value="Император Всех Владиславов">Император Всех Владиславов</option>
+                            </select>
+                        </div>
+
+                        <div class="pt-4 flex flex-col gap-3">
+                            <button 
+                                onclick="downloadCertificate()" 
+                                class="w-full py-4 rounded-xl font-title text-xs sm:text-sm font-extrabold text-obsidian-950 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 hover:from-gold-300 hover:to-gold-500 shadow-xl shadow-gold-500/20 transition-all flex items-center justify-center min-h-[48px]"
+                            >
+                                <i class="fa-solid fa-download mr-2 text-base"></i>
+                                <span>СКАЧАТЬ СЕРТИФИКАТ (PNG HD)</span>
+                            </button>
+                            <p class="text-[11px] text-center text-gray-400">
+                                <i class="fa-solid fa-lock text-emerald-400 mr-1"></i> Отрендерено локально через HTML5 Canvas. Ваши данные никуда не передаются.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Canvas Live Preview -->
+                    <div class="lg:col-span-7 flex flex-col items-center">
+                        <div class="w-full rounded-2xl overflow-hidden shadow-2xl shadow-gold-500/10 border-2 border-gold-500/40 relative group">
+                            <canvas id="certCanvas" width="1200" height="800" class="w-full h-auto block bg-black"></canvas>
+                        </div>
+                        <div class="mt-3 text-xs text-gray-400 flex items-center">
+                            <i class="fa-solid fa-circle-info text-gold-400 mr-1.5"></i> Нажмите «Скачать», чтобы получить документ в полном 1200x800 качестве
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRIVILEGES / ЧТО ДАЕТ ЧЛЕНСТВО -->
+        <section id="privileges" class="py-16 sm:py-28 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/20">Преимущества</span>
+                    <h2 class="font-title text-2xl sm:text-4xl font-extrabold text-white mt-4 mb-3">
+                        ПРИВИЛЕГИИ ЧЛЕНА СИНДИКАТА
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Реальная сила объединения людей с одним именем. Вот что открывается после верификации.
+                    </p>
+                </div>
+
+                <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 hover:border-gold-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-bell-concierge"></i>
+                        </div>
+                        <h3 class="font-title text-base sm:text-lg font-bold text-white mb-2">Кнопка «Брат, выручай»</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                            Экстренный сигнал в закрытый Telegram-бот. Ближайшие Влады в радиусе 5 км приедут "прикурить" аккумулятор или подвезти канистру.
+                        </p>
+                    </div>
+
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 hover:border-gold-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <h3 class="font-title text-base sm:text-lg font-bold text-white mb-2">Карта Владиславов</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                            Интерактивная карта бизнесов, которыми владеют Влады: барбершопы, автосервисы, кофейни со скидками до 25% для братьев.
+                        </p>
+                    </div>
+
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 hover:border-gold-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="font-title text-base sm:text-lg font-bold text-white mb-2">Юридический щит</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                            Пожизненный запрет на опечатки в документах. Юристы Синдиката бесплатно карают бюрократов, назвавших вас Владимиром.
+                        </p>
+                    </div>
+
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 hover:border-gold-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-brands fa-telegram"></i>
+                        </div>
+                        <h3 class="font-title text-base sm:text-lg font-bold text-white mb-2">Тайный Влад-Хаб</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                            Закрытый чат на 40+ тысяч человек без спама, где любой вопрос по работе, жизни или покупке авто решается за 3 минуты.
+                        </p>
+                    </div>
+
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 hover:border-gold-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-beer-mug-empty"></i>
+                        </div>
+                        <h3 class="font-title text-base sm:text-lg font-bold text-white mb-2">Ежегодный VladCon</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                            Билет на крупнейший фестиваль тезок в Москве и Питере. Ведущий объявляет «Эй, Влад!» и оборачиваются 3 000 человек.
+                        </p>
+                    </div>
+
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 hover:border-gold-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <h3 class="font-title text-base sm:text-lg font-bold text-white mb-2">Пожизненный Респект</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                            Нематериальный, но сокрушительный актив. Доступен исключительно тем, чье свидетельство о рождении заверено именем Влад.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIZ: НА СКОЛЬКО ТЫ ВЛАД? -->
+        <section id="quiz" class="py-16 sm:py-24 bg-obsidian-900/60 border-y border-white/5 relative">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/20">Интерактивный тест</span>
+                    <h2 class="font-title text-2xl sm:text-3xl font-extrabold text-white mt-4 mb-2">
+                        НА СКОЛЬКО ПРОЦЕНТОВ ТЫ ВЛАД?
+                    </h2>
+                    <p class="text-gray-400 text-sm">
+                        Ответьте на 3 вопроса и получите официальную оценку вашей Владиславовости.
+                    </p>
+                </div>
+
+                <div id="quizContainer" class="glass-panel rounded-3xl p-6 sm:p-10 border border-white/10">
+                    <div id="quizQuestionBox">
+                        <div class="flex items-center justify-between mb-6 text-xs text-gold-400 font-bold uppercase">
+                            <span id="quizStepText">Вопрос 1 из 3</span>
+                            <span id="quizProgressText">33%</span>
+                        </div>
+
+                        <h3 id="quizQuestionTitle" class="font-title text-lg sm:text-xl font-bold text-white mb-6">
+                            Вас назвали «Володя». Ваша немедленная реакция?
+                        </h3>
+
+                        <div id="quizOptions" class="space-y-3">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result Box -->
+                    <div id="quizResultBox" class="hidden text-center py-6">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center text-3xl mb-4 border border-gold-500/30">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <div class="font-title text-3xl sm:text-4xl font-black text-white mb-2" id="quizFinalScore">
+                            99.9% ИСТИННЫЙ ВЛАД
+                        </div>
+                        <p class="text-gray-300 text-sm sm:text-base max-w-lg mx-auto mb-6" id="quizFinalDesc">
+                            Ваш уровень Владиславовости зашкаливает. Вы достойны места за круглым столом Синдиката.
+                        </p>
+                        <button onclick="resetQuiz()" class="px-6 py-3 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 text-gold-400 border border-gold-500/30 text-xs font-bold uppercase tracking-wider transition-colors min-h-[44px]">
+                            Пройти заново
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING / ТАРИФЫ УЧАСТИЯ -->
+        <section id="pricing" class="py-16 sm:py-28 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/20">Взносы и статусы</span>
+                    <h2 class="font-title text-2xl sm:text-4xl font-extrabold text-white mt-4 mb-3">
+                        ВЫБЕРИТЕ УРОВЕНЬ ПОЛНОМОЧИЙ
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Участие в базовом Синдикате бесплатное для каждого подтвержденного Влада. Для элиты — премиальные опции.
+                    </p>
+                </div>
+
+                <!-- Pricing Cards (Mobile Swipe) -->
+                <div class="flex lg:grid lg:grid-cols-3 gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 items-stretch">
+                    <!-- Tier 1 -->
+                    <div class="min-w-[290px] sm:min-w-[340px] lg:min-w-0 snap-center glass-panel rounded-3xl p-8 border border-white/5 flex flex-col justify-between hover:border-white/20 transition-all">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400 bg-white/5 px-3 py-1 rounded-full">Рядовой Влад</span>
+                            <div class="mt-4 mb-2 flex items-baseline">
+                                <span class="font-title text-4xl font-black text-white">0 ₽</span>
+                                <span class="text-gray-400 text-xs ml-2">/ навсегда</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mb-6">Базовое подтверждение личности и вечный респект.</p>
+
+                            <ul class="space-y-3.5 text-xs sm:text-sm text-gray-300">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Доступ в общий чат Синдиката</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Цифровой базовый сертификат</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Право говорить: «Я тоже Влад»</li>
+                                <li class="flex items-center text-gray-500"><i class="fa-solid fa-xmark mr-3"></i> Золотой тисненый паспорт</li>
+                                <li class="flex items-center text-gray-500"><i class="fa-solid fa-xmark mr-3"></i> Личный гимн Влада</li>
+                            </ul>
+                        </div>
+
+                        <a href="#join" class="mt-8 w-full py-3.5 rounded-xl font-title text-xs font-bold text-white bg-obsidian-800 hover:bg-obsidian-700 border border-white/10 text-center transition-colors min-h-[44px] flex items-center justify-center">
+                            ВСТУПИТЬ БЕСПЛАТНО
+                        </a>
+                    </div>
+
+                    <!-- Tier 2 (Featured VIP) -->
+                    <div class="min-w-[290px] sm:min-w-[340px] lg:min-w-0 snap-center glass-panel rounded-3xl p-8 border-2 border-gold-500/60 shadow-2xl shadow-gold-500/20 bg-gradient-to-b from-gold-500/10 via-obsidian-900 to-obsidian-950 flex flex-col justify-between relative transform lg:-translate-y-3">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gold-400 to-gold-600 text-obsidian-950 text-[10px] font-title font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
+                            ХИТ СРЕДИ ТЕЗОК
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/30">Влад Премиум VIP</span>
+                            <div class="mt-4 mb-2 flex items-baseline">
+                                <span class="font-title text-4xl font-black text-gold-400">777 ₽</span>
+                                <span class="text-gray-400 text-xs ml-2">/ единоразово</span>
+                            </div>
+                            <p class="text-xs text-gray-300 mb-6">Максимум уважения, стикерпак и VIP-статус в боте.</p>
+
+                            <ul class="space-y-3.5 text-xs sm:text-sm text-gray-200">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Все опции Рядового Влада</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Золотая рамка в Telegram-чате</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Набор коллекционных стикеров</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Право называть других «Тезка» с прищуром</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Доступ к экстренной кнопке SOS</li>
+                            </ul>
+                        </div>
+
+                        <a href="#join" class="mt-8 w-full py-4 rounded-xl font-title text-xs font-black text-obsidian-950 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 hover:from-gold-300 hover:to-gold-500 shadow-lg shadow-gold-500/30 text-center transition-all min-h-[48px] flex items-center justify-center">
+                            ПОЛУЧИТЬ VIP СТАТУС
+                        </a>
+                    </div>
+
+                    <!-- Tier 3 -->
+                    <div class="min-w-[290px] sm:min-w-[340px] lg:min-w-0 snap-center glass-panel rounded-3xl p-8 border border-white/5 flex flex-col justify-between hover:border-white/20 transition-all">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Влад Император</span>
+                            <div class="mt-4 mb-2 flex items-baseline">
+                                <span class="font-title text-3xl font-black text-white">99 999 ₽</span>
+                                <span class="text-gray-400 text-xs ml-2">/ разово</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mb-6">Для абсолютных владык мира и владельцев заводов.</p>
+
+                            <ul class="space-y-3.5 text-xs sm:text-sm text-gray-300">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Все опции VIP-статуса</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Личный гимн Влада от нейросети</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Право переименовать один поселок во Владиславовку</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold-400 mr-2.5"></i> Пожизненное место за круглым столом</li>
+                            </ul>
+                        </div>
+
+                        <a href="#join" class="mt-8 w-full py-3.5 rounded-xl font-title text-xs font-bold text-white bg-obsidian-800 hover:bg-obsidian-700 border border-white/10 text-center transition-colors min-h-[44px] flex items-center justify-center">
+                            СТАТЬ ИМПЕРАТОРОМ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REVIEWS / ОТЗЫВЫ ЧЛЕНОВ СИНДИКАТА -->
+        <section id="reviews" class="py-16 sm:py-24 bg-obsidian-900/60 border-y border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/20">Слово Братьев</span>
+                    <h2 class="font-title text-2xl sm:text-4xl font-extrabold text-white mt-4 mb-3">
+                        ОТЗЫВЫ ДЕЙСТВУЮЩИХ ВЛАДОВ
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Реальные истории того, как имя Влад и наш Синдикат спасают жизни, бюджеты и настроение.
+                    </p>
+                </div>
+
+                <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
+                    <!-- Review 1 -->
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-1 text-gold-400 text-xs mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 italic">
+                                «В аэропорту потерял посадочный талон. Подхожу к стойке, на бейдже сотрудника написано "Владислав". Посмотрели друг на друга, пожали руки, через 30 секунд распечатал новый и пересадил в бизнес. Синдикат работает!»
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center font-title text-xs font-bold text-gold-400">
+                                ВА
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Владислав А.</div>
+                                <div class="text-[11px] text-gray-400">г. Казань, IT-предприниматель</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-1 text-gold-400 text-xs mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 italic">
+                                «Распечатал Сертификат Верховного Влада в рамочку и повесил над рабочим столом. Начальник пришел делать выговор, увидел золотую печать, извинился и выписал премию. Рекомендую 10 из 10!»
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center font-title text-xs font-bold text-gold-400">
+                                ВК
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Влад К.</div>
+                                <div class="text-[11px] text-gray-400">г. Москва, Senior Developer</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center glass-panel rounded-2xl p-6 sm:p-7 border border-white/5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-1 text-gold-400 text-xs mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 italic">
+                                «Самое главное — больше никто не пытается назвать меня Володей. Показал друзьям статью 2 нашего Манифеста. Теперь все обращаются исключительно "Влад" или "Господин Владислав".»
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center font-title text-xs font-bold text-gold-400">
+                                ВМ
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Владислав М.</div>
+                                <div class="text-[11px] text-gray-400">г. Екатеринбург, Архитектор</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOIN FORM / ФОРМА ПРИСЯГИ И ВСТУПЛЕНИЯ (152-ФЗ СТРОГО) -->
+        <section id="join" class="py-16 sm:py-28 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-panel rounded-3xl p-6 sm:p-12 border border-gold-500/30 gold-border-glow">
+                    <div class="text-center max-w-xl mx-auto mb-10">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/20">Присяга Синдиката</span>
+                        <h2 class="font-title text-2xl sm:text-4xl font-extrabold text-white mt-4 mb-3">
+                            ВСТУПИТЬ В ОРДЕН ВЛАДОВ
+                        </h2>
+                        <p class="text-gray-300 text-sm">
+                            Заполните анкету для подтверждения в реестре и получения ссылки в закрытый канал связи.
+                        </p>
+                    </div>
+
+                    <form id="vladForm" onsubmit="event.preventDefault(); submitVladForm();" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="formFullName" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+                                    Ваше Имя (строго Влад / Владислав)*
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="formFullName" 
+                                    required 
+                                    placeholder="Владислав"
+                                    class="w-full bg-obsidian-950 border border-white/10 focus:border-gold-400 rounded-xl px-4 py-3.5 text-white text-base focus:outline-none focus:ring-2 focus:ring-gold-500/20"
+                                >
+                            </div>
+
+                            <div>
+                                <label for="formPhone" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+                                    Телефон для секретной связи (РФ)*
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="formPhone" 
+                                    required 
+                                    placeholder="+7 (___) ___-__-__"
+                                    class="w-full bg-obsidian-950 border border-white/10 focus:border-gold-400 rounded-xl px-4 py-3.5 text-white text-base focus:outline-none focus:ring-2 focus:ring-gold-500/20"
+                                    oninput="maskPhone(this)"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="formCity" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+                                    Город дислокации*
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="formCity" 
+                                    required 
+                                    placeholder="Москва"
+                                    class="w-full bg-obsidian-950 border border-white/10 focus:border-gold-400 rounded-xl px-4 py-3.5 text-white text-base focus:outline-none focus:ring-2 focus:ring-gold-500/20"
+                                >
+                            </div>
+
+                            <div>
+                                <label for="formSpec" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+                                    Специализация Влада
+                                </label>
+                                <select 
+                                    id="formSpec" 
+                                    class="w-full bg-obsidian-950 border border-white/10 focus:border-gold-400 rounded-xl px-4 py-3.5 text-white text-base focus:outline-none focus:ring-2 focus:ring-gold-500/20"
+                                >
+                                    <option value="IT и Программирование">Влад в IT и Программировании</option>
+                                    <option value="Бизнес и Управление">Влад в Бизнесе и Управлении</option>
+                                    <option value="Инженерия и Производство">Влад Инженер / Строитель</option>
+                                    <option value="Творчество и Дизайн">Влад Творец / Музыкант / Дизайнер</option>
+                                    <option value="Спорт и Фитнес">Влад Атлет / Спортсмен</option>
+                                    <option value="Универсальный Влад">Универсальный Влад-Стратег</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 152-FZ MANDATORY CHECKBOX (DISABLED BY DEFAULT, NO PRE-CHECK) -->
+                        <div class="pt-2">
+                            <label class="flex items-start space-x-3 cursor-pointer group">
+                                <input 
+                                    type="checkbox" 
+                                    id="consentCheckbox" 
+                                    class="mt-1 w-5 h-5 rounded border-white/20 bg-obsidian-950 text-gold-500 focus:ring-gold-500/40 focus:ring-offset-0 cursor-pointer"
+                                    onchange="toggleSubmitButton()"
+                                >
+                                <span class="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors select-none leading-relaxed">
+                                    Торжественно клянусь, что меня зовут <strong>Влад / Владислав</strong>, и даю <button type="button" onclick="openModal('privacyModal')" class="text-gold-400 hover:underline">согласие на обработку персональных данных</button> в строгом соответствии с ФЗ № 152-ФЗ РФ.
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- SUBMIT BUTTON (LOCKED UNTIL CHECKED) -->
+                        <div>
+                            <button 
+                                type="submit" 
+                                id="submitBtn" 
+                                disabled
+                                class="w-full py-4 rounded-xl font-title text-xs sm:text-sm font-extrabold uppercase tracking-wider text-obsidian-950 bg-gray-600 cursor-not-allowed opacity-50 transition-all shadow-lg flex items-center justify-center min-h-[48px]"
+                            >
+                                <i class="fa-solid fa-stamp mr-2 text-base"></i>
+                                <span>ПРИНЕСТИ ПРИСЯГУ ВЛАДА И ВСТУПИТЬ</span>
+                            </button>
+                            <p id="submitHint" class="text-center text-[11px] text-gray-500 mt-2">
+                                Для отправки анкеты подтвердите согласие с 152-ФЗ флажком выше
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- LEGAL FOOTER (152-FZ & RUSSIAN COMPLIANCE) -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-12 relative z-10 text-gray-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                <!-- Col 1: Identity -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-400 to-gold-700 flex items-center justify-center text-obsidian-950 font-title font-bold text-base">
+                            V
+                        </div>
+                        <span class="font-title font-bold text-white tracking-wider text-sm">VLAD SYNDICATE</span>
+                    </div>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">
+                        Некоммерческое закрытое объединение и цифровой синдикат людей с именем Владислав. Основано в 2026 году.
+                    </p>
+                    <div class="text-[11px] text-gold-400 font-semibold flex items-center">
+                        <i class="fa-solid fa-shield-halved mr-1.5 text-xs"></i>
+                        ХОСТИНГ И БАЗЫ ДАННЫХ — РОССИЙСКАЯ ФЕДЕРАЦИЯ (Ч. 5 СТ. 18 152-ФЗ)
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <h4 class="font-title text-xs font-bold uppercase text-white tracking-wider mb-4">Навигация</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#gate" class="hover:text-gold-400 transition-colors">Фейсконтроль имени</a></li>
+                        <li><a href="#manifest" class="hover:text-gold-400 transition-colors">5 Законов Влада</a></li>
+                        <li><a href="#certificate" class="hover:text-gold-400 transition-colors">Генератор сертификата</a></li>
+                        <li><a href="#privileges" class="hover:text-gold-400 transition-colors">Привилегии тезок</a></li>
+                        <li><a href="#pricing" class="hover:text-gold-400 transition-colors">Статусы и взносы</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Legal -->
+                <div>
+                    <h4 class="font-title text-xs font-bold uppercase text-white tracking-wider mb-4">Правовая информация</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><button onclick="openModal('privacyModal')" class="hover:text-gold-400 transition-colors text-left">Политика конфиденциальности (152-ФЗ)</button></li>
+                        <li><button onclick="openModal('termsModal')" class="hover:text-gold-400 transition-colors text-left">Пользовательское соглашение</button></li>
+                        <li><button onclick="openModal('cookieModal')" class="hover:text-gold-400 transition-colors text-left">Политика обработки Cookie</button></li>
+                        <li><button onclick="openModal('consentModal')" class="hover:text-gold-400 transition-colors text-left">Согласие на обработку персданных</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Requisites & Contacts -->
+                <div class="space-y-3">
+                    <h4 class="font-title text-xs font-bold uppercase text-white tracking-wider mb-4">Реквизиты и Штаб</h4>
+                    <div class="text-[11px] space-y-1 text-gray-400">
+                        <div>ИП Владов Владислав Владиславович</div>
+                        <div>ОГРНИП: 324774600192837</div>
+                        <div>ИНН: 772098765432</div>
+                        <div>Штаб: г. Москва, Пресненская наб., 12 (Башня Федерация)</div>
+                        <div>Email: <a href="mailto:hq@vlad-syndicate.ru" class="text-gold-400 hover:underline">hq@vlad-syndicate.ru</a></div>
+                    </div>
+
+                    <!-- Approved Russian / Global messengers only (No Meta/Insta) -->
+                    <div class="pt-2 flex items-center space-x-3">
+                        <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram канал Владов" class="w-9 h-9 rounded-lg bg-obsidian-800 hover:bg-gold-500 text-gray-300 hover:text-black flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-telegram text-base"></i>
+                        </a>
+                        <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте сообщество Владов" class="w-9 h-9 rounded-lg bg-obsidian-800 hover:bg-gold-500 text-gray-300 hover:text-black flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-vk text-base"></i>
+                        </a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp приемная Владов" class="w-9 h-9 rounded-lg bg-obsidian-800 hover:bg-gold-500 text-gray-300 hover:text-black flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-gray-400 text-[11px] gap-4">
+                <div>© 2026 Всемирный Синдикат Владов (VLAD SYNDICATE). Все права защищены.</div>
+                <div class="text-gray-400">Сделано с уважением к каждому Владиславу планеты.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING COOKIE CONSENT BANNER -->
+    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 glass-panel rounded-2xl p-5 border border-gold-500/30 gold-border-glow shadow-2xl transition-all duration-300">
+        <div class="flex items-start space-x-3.5">
+            <div class="text-2xl text-gold-400">🍪</div>
+            <div class="flex-1">
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-1">Влады уважают ваши Cookie</h4>
+                <p class="text-xs text-gray-300 leading-relaxed mb-3">
+                    Мы используем cookie, чтобы сайт Синдиката работал быстро, а сертификаты генерировались без багов. Нажимая «Принять», вы соглашаетесь с Политикой Cookie.
+                </p>
+                <div class="flex items-center space-x-2">
+                    <button onclick="acceptCookies()" class="px-4 py-2 rounded-lg bg-gradient-to-r from-gold-400 to-gold-600 text-obsidian-950 text-xs font-extrabold hover:from-gold-300 hover:to-gold-500 transition-colors min-h-[44px]">
+                        Принять и продолжить
+                    </button>
+                    <button onclick="openModal('cookieModal')" class="px-3 py-2 text-xs text-gray-400 hover:text-white underline min-h-[44px]">
+                        Подробнее
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEGAL MODALS CONTAINER -->
+    <div id="modalBackdrop" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <!-- Modal Window -->
+        <div class="glass-panel w-full max-w-2xl max-h-[85vh] rounded-3xl border border-gold-500/40 p-6 sm:p-8 overflow-y-auto relative text-gray-300 text-xs sm:text-sm">
+            <button onclick="closeModal()" aria-label="Закрыть окно" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamically injected legal texts -->
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLICATION SUCCESS MODAL -->
+    <div id="successModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-md rounded-3xl border border-gold-500/50 p-8 text-center gold-border-glow">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-400 to-gold-600 text-obsidian-950 flex items-center justify-center text-3xl mx-auto mb-5 shadow-lg shadow-gold-500/30">
+                <i class="fa-solid fa-check-double"></i>
+            </div>
+            <h3 class="font-title text-xl font-black text-white mb-2">ПРИСЯГА ПРИНЯТА!</h3>
+            <p class="text-xs sm:text-sm text-gray-300 mb-6 leading-relaxed">
+                Поздравляем, Брат Влад! Ваша анкета занесена в Единый Реестр Синдиката. Ссылка на закрытый Telegram-канал тезок отправлена на указанный номер.
+            </p>
+            <button onclick="closeSuccessModal()" class="w-full py-3.5 rounded-xl font-title text-xs font-bold text-obsidian-950 bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-300 hover:to-gold-500 transition-colors min-h-[44px]">
+                ОТЛИЧНО, ВПЕРЕД!
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Web Audio API Sound Synthesizer (Zero dependencies)
+        const AudioFX = {
+            ctx: null,
+            init() {
+                if (!this.ctx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContext) this.ctx = new AudioContext();
+                }
+            },
+            playSuccess() {
+                try {
+                    this.init();
+                    if (!this.ctx) return;
+                    const now = this.ctx.currentTime;
+                    // Fanfare notes: C5, E5, G5, C6
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const osc = this.ctx.createOscillator();
+                        const gain = this.ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.1);
+                        gain.gain.setValueAtTime(0.2, now + idx * 0.1);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.1 + 0.35);
+                        osc.connect(gain);
+                        gain.connect(this.ctx.destination);
+                        osc.start(now + idx * 0.1);
+                        osc.stop(now + idx * 0.1 + 0.4);
+                    });
+                } catch(e) { console.log(e); }
+            },
+            playFail() {
+                try {
+                    this.init();
+                    if (!this.ctx) return;
+                    const now = this.ctx.currentTime;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(140, now);
+                    osc.frequency.linearRampToValueAtTime(90, now + 0.4);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.45);
+                } catch(e) { console.log(e); }
+            }
+        };
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // 1. GATE VERIFICATION LOGIC
+        function verifyName() {
+            const input = document.getElementById('gateInputName');
+            const card = document.getElementById('gateCard');
+            const result = document.getElementById('gateResult');
+            const rawVal = input.value.trim().toLowerCase();
+
+            result.classList.remove('hidden');
+
+            // Check if matches Vlad variations
+            const isVlad = /^(влад|владислав|владик|владос|vlad|vladislav|wlad)/i.test(rawVal);
+
+            if (isVlad) {
+                AudioFX.playSuccess();
+                card.classList.remove('border-red-500/50', 'animate-shake');
+                card.classList.add('border-gold-500/80');
+
+                // Confetti fireworks
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 120,
+                        spread: 80,
+                        origin: { y: 0.6 },
+                        colors: ['#F5D061', '#E5B83B', '#ffffff', '#FFD700']
+                    });
+                }
+
+                result.innerHTML = `
+                    <div class="bg-gold-500/10 border border-gold-500/40 rounded-2xl p-6 text-center">
+                        <div class="text-4xl mb-2">👑</div>
+                        <h4 class="font-title text-xl font-black text-gold-400 mb-2">ДОСТУП РАЗРЕШЕН: ЗДРАВСТВУЙ, БРАТ ВЛАД!</h4>
+                        <p class="text-xs sm:text-sm text-gray-300 max-w-md mx-auto mb-4">
+                            Генетический анализ подтвердил 100% концентрацию Владиславовости. Все шлюзы Синдиката для вас распахнуты.
+                        </p>
+                        <a href="#certificate" class="inline-flex items-center text-xs font-bold text-obsidian-950 bg-gold-400 hover:bg-gold-300 px-5 py-2.5 rounded-xl transition-colors">
+                            <i class="fa-solid fa-award mr-2"></i> Перейти к выдаче Золотого Сертификата
+                        </a>
+                    </div>
+                `;
+            } else {
+                AudioFX.playFail();
+                card.classList.remove('border-gold-500/80');
+                card.classList.add('border-red-500/50', 'animate-shake');
+                setTimeout(() => card.classList.remove('animate-shake'), 600);
+
+                result.innerHTML = `
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-2xl p-6 text-center">
+                        <div class="text-4xl mb-2">⛔</div>
+                        <h4 class="font-title text-lg sm:text-xl font-bold text-red-400 mb-2">ДОСТУП ЗАБЛОКИРОВАН: ОБНАРУЖЕН САМОЗВАНЕЦ</h4>
+                        <p class="text-xs sm:text-sm text-gray-300 max-w-md mx-auto mb-4">
+                            Имя «<strong class="text-white">${escapeHtml(input.value.trim())}</strong>» не прошло протокол Синдиката. Согласно Закону №2, мы не пускаем посторонних.
+                        </p>
+                        <div class="text-[11px] text-gray-400">
+                            Рекомендация: Посетите районный ЗАГС, смените имя на Влад и возвращайтесь за привилегиями!
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        // 2. CANVAS CERTIFICATE RENDERER
+        function drawCertificate() {
+            const canvas = document.getElementById('certCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            const name = document.getElementById('certName').value || 'Владислав Великий';
+            const city = document.getElementById('certCity').value || 'Москва, Штаб Владов';
+            const title = document.getElementById('certTitle').value || 'Верховный Влад';
+
+            // Background dark obsidian
+            ctx.fillStyle = '#08080C';
+            ctx.fillRect(0, 0, w, h);
+
+            // Subtle pattern background
+            ctx.strokeStyle = 'rgba(245, 208, 97, 0.04)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < w; i += 40) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, h);
+                ctx.stroke();
+            }
+            for (let j = 0; j < h; j += 40) {
+                ctx.beginPath();
+                ctx.moveTo(0, j);
+                ctx.lineTo(w, j);
+                ctx.stroke();
+            }
+
+            // Outer Gold Border with Double Line
+            const grad = ctx.createLinearGradient(0, 0, w, h);
+            grad.addColorStop(0, '#FFE89E');
+            grad.addColorStop(0.5, '#F5D061');
+            grad.addColorStop(1, '#947214');
+
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 10;
+            ctx.strokeRect(30, 30, w - 60, h - 60);
+
+            ctx.strokeStyle = 'rgba(245, 208, 97, 0.35)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(45, 45, w - 90, h - 90);
+
+            // Corner Ornaments
+            const cornerSize = 40;
+            function drawCorner(x, y, dx, dy) {
+                ctx.strokeStyle = '#F5D061';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(x, y + dy * cornerSize);
+                ctx.lineTo(x, y);
+                ctx.lineTo(x + dx * cornerSize, y);
+                ctx.stroke();
+            }
+            drawCorner(55, 55, 1, 1);
+            drawCorner(w - 55, 55, -1, 1);
+            drawCorner(55, h - 55, 1, -1);
+            drawCorner(w - 55, h - 55, -1, -1);
+
+            // Header Emblem & Texts
+            ctx.textAlign = 'center';
+            
+            // Top Badge
+            ctx.font = 'bold 16px Montserrat, sans-serif';
+            ctx.fillStyle = '#F5D061';
+            ctx.letterSpacing = '6px';
+            ctx.fillText('ВСЕМИРНЫЙ ЦИФРОВОЙ СИНДИКАТ ТЕЗОК', w / 2, 110);
+
+            // Certificate Title
+            ctx.font = '900 48px Unbounded, sans-serif';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillText('СЕРТИФИКАТ ВЛАДА', w / 2, 175);
+
+            // Subtitle
+            ctx.font = '500 18px Montserrat, sans-serif';
+            ctx.fillStyle = '#A0A0B0';
+            ctx.fillText('Настоящий документ удостоверяет исключительное достоинство и статус:', w / 2, 230);
+
+            // Name of Holder (Highlighted with Gold Glow)
+            ctx.font = '800 50px Montserrat, sans-serif';
+            ctx.fillStyle = '#F5D061';
+            ctx.fillText(name, w / 2, 320);
+
+            // Divider Line under Name
+            const lineGrad = ctx.createLinearGradient(w/2 - 250, 0, w/2 + 250, 0);
+            lineGrad.addColorStop(0, 'rgba(245, 208, 97, 0)');
+            lineGrad.addColorStop(0.5, 'rgba(245, 208, 97, 0.8)');
+            lineGrad.addColorStop(1, 'rgba(245, 208, 97, 0)');
+            ctx.strokeStyle = lineGrad;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(w/2 - 250, 345);
+            ctx.lineTo(w/2 + 250, 345);
+            ctx.stroke();
+
+            // Assigned Title
+            ctx.font = 'bold 24px Unbounded, sans-serif';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillText(title, w / 2, 400);
+
+            // City and Jurisdiction
+            ctx.font = '400 18px Montserrat, sans-serif';
+            ctx.fillStyle = '#C0C0D0';
+            ctx.fillText('Дислокация: ' + city + ' • Юрисдикция: 152-ФЗ РФ', w / 2, 445);
+
+            // Paragraph of Honor
+            ctx.font = 'italic 16px Montserrat, sans-serif';
+            ctx.fillStyle = '#8A8A9E';
+            ctx.fillText('Обладатель наделен правом безусловного респекта со стороны всех Владиславов планеты,', w / 2, 510);
+            ctx.fillText('а также пожизненным иммунитетом от ошибочного обращения «Володя».', w / 2, 540);
+
+            // Bottom Official Seal / Stamp (Gold circle on left)
+            const sealX = 220;
+            const sealY = 660;
+            ctx.beginPath();
+            ctx.arc(sealX, sealY, 55, 0, Math.PI * 2);
+            ctx.strokeStyle = '#F5D061';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(sealX, sealY, 48, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(245, 208, 97, 0.5)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.font = 'bold 11px Montserrat, sans-serif';
+            ctx.fillStyle = '#F5D061';
+            ctx.fillText('ОРДЕН ВЛАДОВ', sealX, sealY - 12);
+            ctx.font = '900 18px Unbounded, sans-serif';
+            ctx.fillText('★ 2026 ★', sealX, sealY + 12);
+            ctx.font = 'bold 9px Montserrat, sans-serif';
+            ctx.fillText('ПЕЧАТЬ ВЕРХОВНАЯ', sealX, sealY + 28);
+
+            // Bottom Right Signatures & Verification Code
+            ctx.textAlign = 'right';
+            ctx.font = 'bold 15px Montserrat, sans-serif';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillText('Регистрационный №: VLAD-77492-RU', w - 160, 640);
+            
+            const today = new Date().toLocaleDateString('ru-RU');
+            ctx.font = '400 14px Montserrat, sans-serif';
+            ctx.fillStyle = '#A0A0B0';
+            ctx.fillText('Дата выдачи: ' + today + ' г.', w - 160, 665);
+            ctx.font = 'italic 13px Montserrat, sans-serif';
+            ctx.fillStyle = '#F5D061';
+            ctx.fillText('Заверено: Верховный Совет Владиславов РФ', w - 160, 690);
+        }
+
+        function downloadCertificate() {
+            const canvas = document.getElementById('certCanvas');
+            if (!canvas) return;
+            const link = document.createElement('a');
+            link.download = 'Сертификат_Влада_' + (document.getElementById('certName').value.trim() || 'Синдикат') + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // 3. INTERACTIVE QUIZ LOGIC
+        const quizData = [
+            {
+                q: "Вас назвали «Володя». Ваша немедленная реакция?",
+                answers: [
+                    { text: "Пристально смотрю в глаза и тихо говорю: «Владислав».", score: 35 },
+                    { text: "Показываю сертификат Синдиката и требую компенсацию шаурмой.", score: 35 },
+                    { text: "Прощаю, но мысленно заношу человека в черный список.", score: 25 },
+                    { text: "Откликаюсь... (карается исключением)", score: 0 }
+                ]
+            },
+            {
+                q: "Вы видите незнакомого человека с бейджем «Влад». Ваши действия?",
+                answers: [
+                    { text: "Киваю с легкой полуулыбкой: «Моё почтение, тёзка».", score: 35 },
+                    { text: "Подхожу и даю пятюню, как брату по оружию.", score: 35 },
+                    { text: "Сравниваю, кто из нас выглядит более солидным Владом.", score: 20 },
+                    { text: "Прохожу мимо молча.", score: 5 }
+                ]
+            },
+            {
+                q: "Главное правило написания идеального сайта для Владов?",
+                answers: [
+                    { text: "Никаких багов, строгий 152-ФЗ РФ и золотой градиент.", score: 30 },
+                    { text: "Свайп-карусели на смартфонах и защита от зума на iOS.", score: 30 },
+                    { text: "Чтобы на главной красовалась корона и кнопка респекта.", score: 25 },
+                    { text: "Сделать кнопку 'Войти через запрещенную сеть' (грубейшая ошибка!).", score: 0 }
+                ]
+            }
+        ];
+
+        let curQ = 0;
+        let totalScore = 0;
+
+        function renderQuiz() {
+            const q = quizData[curQ];
+            document.getElementById('quizStepText').textContent = `Вопрос ${curQ + 1} из ${quizData.length}`;
+            document.getElementById('quizProgressText').textContent = `${Math.round(((curQ + 1) / quizData.length) * 100)}%`;
+            document.getElementById('quizQuestionTitle').textContent = q.q;
+
+            const optsBox = document.getElementById('quizOptions');
+            optsBox.innerHTML = '';
+
+            q.answers.forEach((ans) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl bg-obsidian-950 border border-white/10 hover:border-gold-400 hover:bg-gold-500/10 text-xs sm:text-sm text-gray-200 transition-all flex items-center justify-between min-h-[48px]";
+                btn.innerHTML = `
+                    <span>${ans.text}</span>
+                    <i class="fa-solid fa-chevron-right text-gold-400/50 text-xs ml-3"></i>
+                `;
+                btn.onclick = () => handleAnswer(ans.score);
+                optsBox.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(score) {
+            totalScore += score;
+            curQ++;
+            if (curQ < quizData.length) {
+                renderQuiz();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('quizQuestionBox').classList.add('hidden');
+            const resBox = document.getElementById('quizResultBox');
+            resBox.classList.remove('hidden');
+
+            const scoreEl = document.getElementById('quizFinalScore');
+            const descEl = document.getElementById('quizFinalDesc');
+
+            if (totalScore >= 80) {
+                AudioFX.playSuccess();
+                scoreEl.textContent = `${totalScore}% — ВЕРХОВНЫЙ ВЛАД!`;
+                descEl.textContent = "Ваша концентрация Владиславовости близка к абсолютной. Вы — эталон имени, опора братьев и хранитель золотого кодекса.";
+            } else if (totalScore >= 50) {
+                scoreEl.textContent = `${totalScore}% — ДОСТОЙНЫЙ ТЕЗКА`;
+                descEl.textContent = "Вы на верном пути! Почаще напоминайте окружающим о разнице с Владимиром и ваш статус взлетит до небес.";
+            } else {
+                AudioFX.playFail();
+                scoreEl.textContent = `${totalScore}% — ТРЕБУЕТСЯ КУРС РЕАБИЛИТАЦИИ`;
+                descEl.textContent = "Подозрительно низкий балл. Срочно перечитайте Манифест Владов и не откликайтесь на 'Володю'!";
+            }
+        }
+
+        function resetQuiz() {
+            curQ = 0;
+            totalScore = 0;
+            document.getElementById('quizQuestionBox').classList.remove('hidden');
+            document.getElementById('quizResultBox').classList.add('hidden');
+            renderQuiz();
+        }
+
+        // 4. PHONE MASK (+7 (XXX) XXX-XX-XX)
+        function maskPhone(input) {
+            let val = input.value.replace(/\D/g, '');
+            if (val.length === 0) {
+                input.value = '';
+                return;
+            }
+            if (val[0] === '7' || val[0] === '8') {
+                val = val.substring(1);
+            }
+            let formatted = '+7 (';
+            if (val.length > 0) formatted += val.substring(0, 3);
+            if (val.length >= 3) formatted += ') ' + val.substring(3, 6);
+            if (val.length >= 6) formatted += '-' + val.substring(6, 8);
+            if (val.length >= 8) formatted += '-' + val.substring(8, 10);
+            input.value = formatted;
+        }
+
+        // 5. 152-FZ COMPLIANCE: SUBMIT BUTTON TOGGLE
+        function toggleSubmitButton() {
+            const chk = document.getElementById('consentCheckbox');
+            const btn = document.getElementById('submitBtn');
+            const hint = document.getElementById('submitHint');
+
+            if (chk.checked) {
+                btn.disabled = false;
+                btn.classList.remove('bg-gray-600', 'cursor-not-allowed', 'opacity-50');
+                btn.classList.add('bg-gradient-to-r', 'from-gold-400', 'via-gold-500', 'to-gold-600', 'hover:from-gold-300', 'hover:to-gold-500', 'cursor-pointer');
+                hint.classList.add('hidden');
+            } else {
+                btn.disabled = true;
+                btn.classList.add('bg-gray-600', 'cursor-not-allowed', 'opacity-50');
+                btn.classList.remove('bg-gradient-to-r', 'from-gold-400', 'via-gold-500', 'to-gold-600', 'hover:from-gold-300', 'hover:to-gold-500', 'cursor-pointer');
+                hint.classList.remove('hidden');
+            }
+        }
+
+        function submitVladForm() {
+            const chk = document.getElementById('consentCheckbox');
+            if (!chk.checked) {
+                alert('Необходимо согласие на обработку персональных данных (152-ФЗ РФ).');
+                return;
+            }
+            AudioFX.playSuccess();
+            document.getElementById('successModal').classList.remove('hidden');
+            document.getElementById('vladForm').reset();
+            toggleSubmitButton();
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        // 6. COOKIE BANNER (LOCAL STORAGE)
+        function checkCookieConsent() {
+            const accepted = localStorage.getItem('cookie_consent_accepted');
+            if (accepted === 'true') {
+                const banner = document.getElementById('cookie-banner');
+                if (banner) banner.classList.add('hidden');
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookie_consent_accepted', 'true');
+            const banner = document.getElementById('cookie-banner');
+            if (banner) banner.classList.add('hidden');
+        }
+
+        // 7. LEGAL MODALS TEXTS
+        const legalTexts = {
+            privacyModal: `
+                <h3 class="font-title text-lg font-bold text-white mb-4">Политика Конфиденциальности (152-ФЗ РФ)</h3>
+                <p class="mb-3">Настоящая Политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок сбора, обработки и защиты информации Оператором (ИП Владов В.В.).</p>
+                <h4 class="font-bold text-white mb-2">1. Категории обрабатываемых данных</h4>
+                <p class="mb-3">Оператор обрабатывает следующие персональные данные: Имя, номер контактного телефона, город проживания, специализация. Все базы данных и серверы хранения размещены строго на территории Российской Федерации (ч. 5 ст. 18 152-ФЗ).</p>
+                <h4 class="font-bold text-white mb-2">2. Цели обработки</h4>
+                <p class="mb-3">Регистрация в закрытом реестре тезок «VLAD SYNDICATE», отправка служебных уведомлений и приглашений на закрытые мероприятия Синдиката.</p>
+                <h4 class="font-bold text-white mb-2">3. Права субъекта</h4>
+                <p>Субъект вправе в любой момент отозвать свое согласие путем направления письменного запроса на электронную почту: hq@vlad-syndicate.ru.</p>
+            `,
+            termsModal: `
+                <h3 class="font-title text-lg font-bold text-white mb-4">Пользовательское Соглашение</h3>
+                <p class="mb-3">Добро пожаловать в цифровое пространство «VLAD SYNDICATE». Используя данный веб-ресурс, вы принимаете условия настоящего Соглашения.</p>
+                <h4 class="font-bold text-white mb-2">1. Статус участника</h4>
+                <p class="mb-3">Членом Синдиката признается любое дееспособное физическое лицо, официально нареченное именем Владислав (Влад). Лица с иными именами имеют статус Почетных Гостей и обязаны относиться к Владам с подобающим пиететом.</p>
+                <h4 class="font-bold text-white mb-2">2. Неприкосновенность имени</h4>
+                <p>Любые попытки называть участников Синдиката именем «Владимир» или «Володя» признаются нарушением дружелюбной атмосферы и влекут за собой виртуальный бан.</p>
+            `,
+            cookieModal: `
+                <h3 class="font-title text-lg font-bold text-white mb-4">Политика использования файлов Cookie</h3>
+                <p class="mb-3">Файлы cookie представляют собой небольшие фрагменты данных, сохраняемые на вашем устройстве для повышения скорости и комфорта работы с сайтом.</p>
+                <h4 class="font-bold text-white mb-2">Какие cookie мы используем:</h4>
+                <p class="mb-3">1. <strong>Технические cookie:</strong> сохраняют факт прохождения фейсконтроля и состояние согласия с cookie (localStorage).<br>2. <strong>Сессионные cookie:</strong> обеспечивают работу Canvas-генератора сертификатов.</p>
+                <p>Вы можете отключить cookie в настройках вашего браузера, однако часть интерактивных функций сайта может работать некорректно.</p>
+            `,
+            consentModal: `
+                <h3 class="font-title text-lg font-bold text-white mb-4">Согласие на обработку персональных данных</h3>
+                <p class="mb-3">Заполняя форму присяги на сайте, я свободно, своей волей и в своем интересе даю согласие Оператору (ИП Владов В.В., ОГРНИП 324774600192837) на обработку моих персональных данных (имя, номер телефона, город, профессия).</p>
+                <p class="mb-3">Согласие распространяется на следующие действия: сбор, запись, систематизация, накопление, хранение, уточнение, извлечение, использование, передача (в рамках Telegram-сообщества), блокирование, удаление, уничтожение.</p>
+                <p>Настоящее согласие действует бессрочно с момента предоставления данных.</p>
+            `
+        };
+
+        function openModal(type) {
+            const backdrop = document.getElementById('modalBackdrop');
+            const content = document.getElementById('modalContent');
+            content.innerHTML = legalTexts[type] || '<p>Информация уточняется.</p>';
+            backdrop.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modalBackdrop').classList.add('hidden');
+        }
+
+        // Close on clicking outside modal
+        document.getElementById('modalBackdrop').addEventListener('click', (e) => {
+            if (e.target.id === 'modalBackdrop') closeModal();
+        });
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            checkCookieConsent();
+            drawCertificate();
+            renderQuiz();
+        });
+    </script>
+</body>
+</html>
